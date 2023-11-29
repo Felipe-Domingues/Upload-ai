@@ -17,11 +17,12 @@ Content-Type: audio/mpeg
 ### 
 
 # @name create-transcription
-POST http://localhost:3333/videos/582ca610-82c9-45b1-a8f6-2055d6b00512/transcription
+POST http://localhost:3333/videos/17443935-d946-4a5f-a168-77a5fb394b07/transcription
 Content-Type: application/json
 
 {
-  "prompt": "rocketseat, one, tecnologia"
+  "openAIKey": "",
+  "prompt": "IES, MEC"
 }
 
 ### 
@@ -31,8 +32,8 @@ POST http://localhost:3333/ai/complete
 Content-Type: application/json
 
 {
-  "videoId": "763d6a21-ae8d-40c5-a43e-a8dc32cb164e",
+  "videoId": "17443935-d946-4a5f-a168-77a5fb394b07",
   "temperature": 0.5,
-  "prompt": "Gere um resumo sucinto da transcrição do vídeo informada a seguir: '''{transcription}'''",
-  "openAIKey": "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"
+  "prompt": "Gere uma lista dos principais assuntos abordados em formato de tópicos da transcrição do vídeo informada a seguir: '''{transcription}'''",
+  "openAIKey": ""
 }

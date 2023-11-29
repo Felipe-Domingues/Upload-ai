@@ -20,12 +20,21 @@ export function OpenAIContextProvider({
     const storedState = localStorage.getItem('@upload-ai:openai-state-1.0.0')
 
     if (storedState) {
-      setOpenAIKey(storedState)
+      // const decryptedKey = AES.decrypt(storedState, 'c7195820f148')
+      const decryptedKey = atob(storedState)
+      if (decryptedKey) {
+        setOpenAIKey(decryptedKey)
+      }
     }
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('@upload-ai:openai-state-1.0.0', openAIKey || '')
+    if (openAIKey) {
+      // const encryptedKey = AES.encrypt(openAIKey, 'c7195820f148').toString()
+      const encryptedKey = btoa(openAIKey)
+
+      localStorage.setItem('@upload-ai:openai-state-1.0.0', encryptedKey || '')
+    }
   }, [openAIKey])
 
   function setNewOpenAIKey(key: string | undefined) {
